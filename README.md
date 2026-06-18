@@ -10,5 +10,5 @@ Wordpress Final project for AWS Class in Dankook University
 2.Launch an ec2 instance 
 3. Launch rds cluster 
 4. Configure ec2 instance to connect to rds
-
+5. Mae it for high availiblity and high configuration
 
