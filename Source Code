@@ -1,104 +1,691 @@
-Source Code For the Wordpress
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+[ec2-user@ip-172-31-27-169 ~]$ sudo passwd root
+Changing password for user root.
+New password: 
+Retype new password: 
+passwd: all authentication tokens updated successfully.
+[ec2-user@ip-172-31-27-169 ~]$ su -
+Password: 
+[root@ip-172-31-27-169 ~]# yum update -y
+Amazon Linux 2023 Kernel Livepatch repository 358 kB/s |  48 kB     00:00    
+Dependencies resolved.
+Nothing to do.
+Complete!
+[root@ip-172-31-27-169 ~]# yum install httpd
+Last metadata expiration check: 0:00:28 ago on Thu Jun 18 03:56:28 2026.
+Dependencies resolved.
+==============================================================================
+ Package               Arch     Version                   Repository     Size
+==============================================================================
+Installing:
+ httpd                 x86_64   2.4.67-1.amzn2023.0.1     amazonlinux    46 k
+Installing dependencies:
+ apr                   x86_64   1.7.5-1.amzn2023.0.4      amazonlinux   129 k
+ apr-util              x86_64   1.6.3-1.amzn2023.0.2      amazonlinux    97 k
+ apr-util-lmdb         x86_64   1.6.3-1.amzn2023.0.2      amazonlinux    13 k
+ generic-logos-httpd   noarch   18.0.0-12.amzn2023.0.3    amazonlinux    19 k
+ httpd-core            x86_64   2.4.67-1.amzn2023.0.1     amazonlinux   1.4 M
+ httpd-filesystem      noarch   2.4.67-1.amzn2023.0.1     amazonlinux    12 k
+ httpd-tools           x86_64   2.4.67-1.amzn2023.0.1     amazonlinux    80 k
+ libbrotli             x86_64   1.0.9-4.amzn2023.0.2      amazonlinux   315 k
+ mailcap               noarch   2.1.49-3.amzn2023.0.3     amazonlinux    33 k
+Installing weak dependencies:
+ apr-util-openssl      x86_64   1.6.3-1.amzn2023.0.2      amazonlinux    15 k
+ mod_http2             x86_64   2.0.39-1.amzn2023.0.1     amazonlinux   167 k
+ mod_lua               x86_64   2.4.67-1.amzn2023.0.1     amazonlinux    59 k
 
-<?php
-/**
- * The base configuration for WordPress
- *
- * The wp-config.php creation script uses this file during the installation.
- * You don't have to use the website, you can copy this file to "wp-config.php"
- * and fill in the values.
- *
- * This file contains the following configurations:
- *
- * * Database settings
- * * Secret keys
- * * Database table prefix
- * * ABSPATH
- *
- * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/
- *
- * @package WordPress
- */
+Transaction Summary
+==============================================================================
+Install  13 Packages
 
-// ** Database settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define( 'DB_NAME', 'wordpress' );
+Total download size: 2.4 M
+Installed size: 7.0 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/13): apr-1.7.5-1.amzn2023.0.4.x86_64.rpm   1.5 MB/s | 129 kB     00:00    
+(2/13): apr-util-1.6.3-1.amzn2023.0.2.x86_64. 1.0 MB/s |  97 kB     00:00    
+(3/13): apr-util-lmdb-1.6.3-1.amzn2023.0.2.x8 134 kB/s |  13 kB     00:00    
+(4/13): apr-util-openssl-1.6.3-1.amzn2023.0.2 548 kB/s |  15 kB     00:00    
+(5/13): generic-logos-httpd-18.0.0-12.amzn202 776 kB/s |  19 kB     00:00    
+(6/13): httpd-2.4.67-1.amzn2023.0.1.x86_64.rp 1.6 MB/s |  46 kB     00:00    
+(7/13): httpd-core-2.4.67-1.amzn2023.0.1.x86_  26 MB/s | 1.4 MB     00:00    
+(8/13): httpd-filesystem-2.4.67-1.amzn2023.0. 274 kB/s |  12 kB     00:00    
+(9/13): httpd-tools-2.4.67-1.amzn2023.0.1.x86 1.6 MB/s |  80 kB     00:00    
+(10/13): libbrotli-1.0.9-4.amzn2023.0.2.x86_6  12 MB/s | 315 kB     00:00    
+(11/13): mailcap-2.1.49-3.amzn2023.0.3.noarch 1.1 MB/s |  33 kB     00:00    
+(12/13): mod_http2-2.0.39-1.amzn2023.0.1.x86_ 4.8 MB/s | 167 kB     00:00    
+(13/13): mod_lua-2.4.67-1.amzn2023.0.1.x86_64 1.9 MB/s |  59 kB     00:00    
+------------------------------------------------------------------------------
+Total                                         7.3 MB/s | 2.4 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                      1/1 
+  Installing       : apr-1.7.5-1.amzn2023.0.4.x86_64                     1/13 
+  Installing       : apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64           2/13 
+  Installing       : apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64        3/13 
+  Installing       : apr-util-1.6.3-1.amzn2023.0.2.x86_64                4/13 
+  Installing       : mailcap-2.1.49-3.amzn2023.0.3.noarch                5/13 
+  Installing       : httpd-tools-2.4.67-1.amzn2023.0.1.x86_64            6/13 
+  Installing       : libbrotli-1.0.9-4.amzn2023.0.2.x86_64               7/13 
+  Running scriptlet: httpd-filesystem-2.4.67-1.amzn2023.0.1.noarch       8/13 
+  Installing       : httpd-filesystem-2.4.67-1.amzn2023.0.1.noarch       8/13 
+  Installing       : httpd-core-2.4.67-1.amzn2023.0.1.x86_64             9/13 
+  Installing       : mod_http2-2.0.39-1.amzn2023.0.1.x86_64             10/13 
+  Installing       : mod_lua-2.4.67-1.amzn2023.0.1.x86_64               11/13 
+  Installing       : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarc   12/13 
+  Installing       : httpd-2.4.67-1.amzn2023.0.1.x86_64                 13/13 
+  Running scriptlet: httpd-2.4.67-1.amzn2023.0.1.x86_64                 13/13 
+  Verifying        : apr-1.7.5-1.amzn2023.0.4.x86_64                     1/13 
+  Verifying        : apr-util-1.6.3-1.amzn2023.0.2.x86_64                2/13 
+  Verifying        : apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64           3/13 
+  Verifying        : apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64        4/13 
+  Verifying        : generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarc    5/13 
+  Verifying        : httpd-2.4.67-1.amzn2023.0.1.x86_64                  6/13 
+  Verifying        : httpd-core-2.4.67-1.amzn2023.0.1.x86_64             7/13 
+  Verifying        : httpd-filesystem-2.4.67-1.amzn2023.0.1.noarch       8/13 
+  Verifying        : httpd-tools-2.4.67-1.amzn2023.0.1.x86_64            9/13 
+  Verifying        : libbrotli-1.0.9-4.amzn2023.0.2.x86_64              10/13 
+  Verifying        : mailcap-2.1.49-3.amzn2023.0.3.noarch               11/13 
+  Verifying        : mod_http2-2.0.39-1.amzn2023.0.1.x86_64             12/13 
+  Verifying        : mod_lua-2.4.67-1.amzn2023.0.1.x86_64               13/13 
 
-/** Database username */
-define( 'DB_USER', 'wordpressuser' );
+Installed:
+  apr-1.7.5-1.amzn2023.0.4.x86_64                                             
+  apr-util-1.6.3-1.amzn2023.0.2.x86_64                                        
+  apr-util-lmdb-1.6.3-1.amzn2023.0.2.x86_64                                   
+  apr-util-openssl-1.6.3-1.amzn2023.0.2.x86_64                                
+  generic-logos-httpd-18.0.0-12.amzn2023.0.3.noarch                           
+  httpd-2.4.67-1.amzn2023.0.1.x86_64                                          
+  httpd-core-2.4.67-1.amzn2023.0.1.x86_64                                     
+  httpd-filesystem-2.4.67-1.amzn2023.0.1.noarch                               
+  httpd-tools-2.4.67-1.amzn2023.0.1.x86_64                                    
+  libbrotli-1.0.9-4.amzn2023.0.2.x86_64                                       
+  mailcap-2.1.49-3.amzn2023.0.3.noarch                                        
+  mod_http2-2.0.39-1.amzn2023.0.1.x86_64                                      
+  mod_lua-2.4.67-1.amzn2023.0.1.x86_64                                        
 
-/** Database password */
-define( 'DB_PASSWORD', 'Dankook2026' );
+Complete!
+[root@ip-172-31-27-169 ~]# systemctl start httpd
+[root@ip-172-31-27-169 ~]# systemctl enable httpd
+Created symlink /etc/systemd/system/multi-user.target.wants/httpd.service → /usr/lib/systemd/system/httpd.service.
+[root@ip-172-31-27-169 ~]# systemctl status httpd
+● httpd.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: >
+     Active: active (running) since Thu 2026-06-18 03:57:34 UTC; 1min 5s ago
+       Docs: man:httpd.service(8)
+   Main PID: 25999 (httpd)
+     Status: "Total requests: 0; Idle/Busy workers 100/0;Requests/sec: 0; Byt>
+      Tasks: 177 (limit: 1014)
+     Memory: 13.5M
+        CPU: 151ms
+     CGroup: /system.slice/httpd.service
+             ├─25999 /usr/sbin/httpd -DFOREGROUND
+             ├─26023 /usr/sbin/httpd -DFOREGROUND
+             ├─26025 /usr/sbin/httpd -DFOREGROUND
+             ├─26033 /usr/sbin/httpd -DFOREGROUND
+             └─26053 /usr/sbin/httpd -DFOREGROUND
 
-/** Database hostname */
-define( 'DB_HOST', 'finalproject-wordpress.chgsqsaiq7bn.us-east-1.rds.amazonaws.com' );
+Jun 18 03:57:34 ip-172-31-27-169.ec2.internal systemd[1]: Starting httpd.serv>
+Jun 18 03:57:34 ip-172-31-27-169.ec2.internal systemd[1]: Started httpd.servi>
+Jun 18 03:57:34 ip-172-31-27-169.ec2.internal httpd[25999]: Server configured>
+[root@ip-172-31-27-169 ~]# yum install php php-mysqlnd php-fpm php-json php-gdphp-xml php-mbstring -y
+Last metadata expiration check: 0:03:55 ago on Thu Jun 18 03:56:28 2026.
+No match for argument: php-gdphp-xml
+Error: Unable to find a match: php-gdphp-xml
+[root@ip-172-31-27-169 ~]# yum install php php-mysqlnd php-fpm php-json php-gd php-xml php-mbstring -y
+Last metadata expiration check: 0:04:16 ago on Thu Jun 18 03:56:28 2026.
+Dependencies resolved.
+==============================================================================
+ Package                   Arch   Version                   Repository   Size
+==============================================================================
+Installing:
+ php8.5                    x86_64 8.5.6-1.amzn2023.0.1      amazonlinux  14 k
+ php8.5-fpm                x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 3.1 M
+ php8.5-gd                 x86_64 8.5.6-1.amzn2023.0.1      amazonlinux  54 k
+ php8.5-mbstring           x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 539 k
+ php8.5-mysqlnd            x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 154 k
+Installing dependencies:
+ cairo                     x86_64 1.18.0-4.amzn2023.0.3     amazonlinux 717 k
+ fontconfig                x86_64 2.13.94-2.amzn2023.0.2    amazonlinux 273 k
+ fonts-filesystem          noarch 1:2.0.5-12.amzn2023.0.2   amazonlinux 9.5 k
+ freetype                  x86_64 2.13.2-5.amzn2023.0.2     amazonlinux 422 k
+ gd                        x86_64 2.3.3-5.amzn2023.0.3      amazonlinux 139 k
+ google-noto-fonts-common  noarch 20240401-1.amzn2023.0.2   amazonlinux  17 k
+ google-noto-sans-vf-fonts noarch 20240401-1.amzn2023.0.2   amazonlinux 593 k
+ graphite2                 x86_64 1.3.14-7.amzn2023.0.2     amazonlinux  97 k
+ harfbuzz                  x86_64 7.0.0-2.amzn2023.0.2      amazonlinux 873 k
+ jbigkit-libs              x86_64 2.1-21.amzn2023.0.2       amazonlinux  54 k
+ langpacks-core-font-en    noarch 3.0-21.amzn2023.0.4       amazonlinux  10 k
+ libX11                    x86_64 1.8.10-2.amzn2023.0.1     amazonlinux 659 k
+ libX11-common             noarch 1.8.10-2.amzn2023.0.1     amazonlinux 147 k
+ libXau                    x86_64 1.0.11-6.amzn2023.0.1     amazonlinux  33 k
+ libXext                   x86_64 1.3.6-1.amzn2023.0.1      amazonlinux  42 k
+ libXpm                    x86_64 3.5.17-3.amzn2023.0.2     amazonlinux  67 k
+ libXrender                x86_64 0.9.11-6.amzn2023.0.1     amazonlinux  29 k
+ libjpeg-turbo             x86_64 2.1.4-2.amzn2023.0.5      amazonlinux 190 k
+ libpng                    x86_64 2:1.6.37-10.amzn2023.0.13 amazonlinux 128 k
+ libsodium                 x86_64 1.0.19-5.amzn2023         amazonlinux 174 k
+ libtiff                   x86_64 4.4.0-4.amzn2023.0.26     amazonlinux 210 k
+ libwebp                   x86_64 1.2.4-1.amzn2023.0.6      amazonlinux 341 k
+ libxcb                    x86_64 1.17.0-1.amzn2023.0.1     amazonlinux 235 k
+ libxslt                   x86_64 1.1.43-1.amzn2023.0.3     amazonlinux 183 k
+ nginx-filesystem          noarch 1:1.30.2-1.amzn2023.0.1   amazonlinux  10 k
+ php8.5-cli                x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 6.1 M
+ php8.5-common             x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 857 k
+ php8.5-pdo                x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 100 k
+ php8.5-process            x86_64 8.5.6-1.amzn2023.0.1      amazonlinux  50 k
+ php8.5-xml                x86_64 8.5.6-1.amzn2023.0.1      amazonlinux 248 k
+ pixman                    x86_64 0.43.4-1.amzn2023.0.4     amazonlinux 296 k
+ xml-common                noarch 0.6.3-56.amzn2023.0.2     amazonlinux  32 k
+Installing weak dependencies:
+ php8.5-sodium             x86_64 8.5.6-1.amzn2023.0.1      amazonlinux  45 k
 
-/** Database charset to use in creating database tables. */
-define( 'DB_CHARSET', 'utf8mb4' );
+Transaction Summary
+==============================================================================
+Install  38 Packages
 
-/** The database collate type. Don't change this if in doubt. */
-define( 'DB_COLLATE', '' );
+Total download size: 17 M
+Installed size: 75 M
+Downloading Packages:
+(1/38): fonts-filesystem-2.0.5-12.amzn2023.0. 259 kB/s | 9.5 kB     00:00    
+(2/38): fontconfig-2.13.94-2.amzn2023.0.2.x86 6.3 MB/s | 273 kB     00:00    
+(3/38): cairo-1.18.0-4.amzn2023.0.3.x86_64.rp  14 MB/s | 717 kB     00:00    
+(4/38): gd-2.3.3-5.amzn2023.0.3.x86_64.rpm    5.5 MB/s | 139 kB     00:00    
+(5/38): freetype-2.13.2-5.amzn2023.0.2.x86_64  11 MB/s | 422 kB     00:00    
+(6/38): google-noto-fonts-common-20240401-1.a 618 kB/s |  17 kB     00:00    
+(7/38): google-noto-sans-vf-fonts-20240401-1.  21 MB/s | 593 kB     00:00    
+(8/38): graphite2-1.3.14-7.amzn2023.0.2.x86_6 3.7 MB/s |  97 kB     00:00    
+(9/38): harfbuzz-7.0.0-2.amzn2023.0.2.x86_64.  28 MB/s | 873 kB     00:00    
+(10/38): jbigkit-libs-2.1-21.amzn2023.0.2.x86 2.1 MB/s |  54 kB     00:00    
+(11/38): langpacks-core-font-en-3.0-21.amzn20 410 kB/s |  10 kB     00:00    
+(12/38): libX11-1.8.10-2.amzn2023.0.1.x86_64.  18 MB/s | 659 kB     00:00    
+(13/38): libX11-common-1.8.10-2.amzn2023.0.1. 5.9 MB/s | 147 kB     00:00    
+(14/38): libXau-1.0.11-6.amzn2023.0.1.x86_64. 1.4 MB/s |  33 kB     00:00    
+(15/38): libXext-1.3.6-1.amzn2023.0.1.x86_64. 1.7 MB/s |  42 kB     00:00    
+(16/38): libXpm-3.5.17-3.amzn2023.0.2.x86_64. 2.7 MB/s |  67 kB     00:00    
+(17/38): libXrender-0.9.11-6.amzn2023.0.1.x86 1.1 MB/s |  29 kB     00:00    
+(18/38): libjpeg-turbo-2.1.4-2.amzn2023.0.5.x 8.6 MB/s | 190 kB     00:00    
+(19/38): libpng-1.6.37-10.amzn2023.0.13.x86_6 5.2 MB/s | 128 kB     00:00    
+(20/38): libsodium-1.0.19-5.amzn2023.x86_64.r 4.9 MB/s | 174 kB     00:00    
+(21/38): libtiff-4.4.0-4.amzn2023.0.26.x86_64 6.6 MB/s | 210 kB     00:00    
+(22/38): libwebp-1.2.4-1.amzn2023.0.6.x86_64.  11 MB/s | 341 kB     00:00    
+(23/38): libxcb-1.17.0-1.amzn2023.0.1.x86_64. 8.1 MB/s | 235 kB     00:00    
+(24/38): libxslt-1.1.43-1.amzn2023.0.3.x86_64 7.5 MB/s | 183 kB     00:00    
+(25/38): nginx-filesystem-1.30.2-1.amzn2023.0 377 kB/s |  10 kB     00:00    
+(26/38): php8.5-8.5.6-1.amzn2023.0.1.x86_64.r 517 kB/s |  14 kB     00:00    
+(27/38): php8.5-common-8.5.6-1.amzn2023.0.1.x  27 MB/s | 857 kB     00:00    
+(28/38): php8.5-fpm-8.5.6-1.amzn2023.0.1.x86_  60 MB/s | 3.1 MB     00:00    
+(29/38): php8.5-gd-8.5.6-1.amzn2023.0.1.x86_6 1.5 MB/s |  54 kB     00:00    
+(30/38): php8.5-cli-8.5.6-1.amzn2023.0.1.x86_  58 MB/s | 6.1 MB     00:00    
+(31/38): php8.5-mysqlnd-8.5.6-1.amzn2023.0.1. 4.7 MB/s | 154 kB     00:00    
+(32/38): php8.5-mbstring-8.5.6-1.amzn2023.0.1  13 MB/s | 539 kB     00:00    
+(33/38): php8.5-pdo-8.5.6-1.amzn2023.0.1.x86_ 4.0 MB/s | 100 kB     00:00    
+(34/38): php8.5-process-8.5.6-1.amzn2023.0.1. 2.0 MB/s |  50 kB     00:00    
+(35/38): php8.5-sodium-8.5.6-1.amzn2023.0.1.x 2.0 MB/s |  45 kB     00:00    
+(36/38): php8.5-xml-8.5.6-1.amzn2023.0.1.x86_  12 MB/s | 248 kB     00:00    
+(37/38): xml-common-0.6.3-56.amzn2023.0.2.noa 1.2 MB/s |  32 kB     00:00    
+(38/38): pixman-0.43.4-1.amzn2023.0.4.x86_64. 8.3 MB/s | 296 kB     00:00    
+------------------------------------------------------------------------------
+Total                                          36 MB/s |  17 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                      1/1 
+  Installing       : php8.5-common-8.5.6-1.amzn2023.0.1.x86_64           1/38 
+  Installing       : libpng-2:1.6.37-10.amzn2023.0.13.x86_64             2/38 
+  Installing       : php8.5-pdo-8.5.6-1.amzn2023.0.1.x86_64              3/38 
+  Installing       : libwebp-1.2.4-1.amzn2023.0.6.x86_64                 4/38 
+  Installing       : libjpeg-turbo-2.1.4-2.amzn2023.0.5.x86_64           5/38 
+  Installing       : fonts-filesystem-1:2.0.5-12.amzn2023.0.2.noarch     6/38 
+  Installing       : php8.5-cli-8.5.6-1.amzn2023.0.1.x86_64              7/38 
+  Installing       : php8.5-mbstring-8.5.6-1.amzn2023.0.1.x86_64         8/38 
+  Installing       : php8.5-process-8.5.6-1.amzn2023.0.1.x86_64          9/38 
+  Running scriptlet: xml-common-0.6.3-56.amzn2023.0.2.noarch            10/38 
+  Installing       : xml-common-0.6.3-56.amzn2023.0.2.noarch            10/38 
+  Installing       : pixman-0.43.4-1.amzn2023.0.4.x86_64                11/38 
+  Running scriptlet: nginx-filesystem-1:1.30.2-1.amzn2023.0.1.noarch    12/38 
+  Installing       : nginx-filesystem-1:1.30.2-1.amzn2023.0.1.noarch    12/38 
+  Installing       : php8.5-fpm-8.5.6-1.amzn2023.0.1.x86_64             13/38 
+  Running scriptlet: php8.5-fpm-8.5.6-1.amzn2023.0.1.x86_64             13/38 
+  Installing       : libxslt-1.1.43-1.amzn2023.0.3.x86_64               14/38 
+  Installing       : php8.5-xml-8.5.6-1.amzn2023.0.1.x86_64             15/38 
+  Installing       : libsodium-1.0.19-5.amzn2023.x86_64                 16/38 
+  Installing       : php8.5-sodium-8.5.6-1.amzn2023.0.1.x86_64          17/38 
+  Installing       : libXau-1.0.11-6.amzn2023.0.1.x86_64                18/38 
+  Installing       : libxcb-1.17.0-1.amzn2023.0.1.x86_64                19/38 
+  Installing       : libX11-common-1.8.10-2.amzn2023.0.1.noarch         20/38 
+  Installing       : libX11-1.8.10-2.amzn2023.0.1.x86_64                21/38 
+  Installing       : libXext-1.3.6-1.amzn2023.0.1.x86_64                22/38 
+  Installing       : libXpm-3.5.17-3.amzn2023.0.2.x86_64                23/38 
+  Installing       : libXrender-0.9.11-6.amzn2023.0.1.x86_64            24/38 
+  Installing       : jbigkit-libs-2.1-21.amzn2023.0.2.x86_64            25/38 
+  Installing       : libtiff-4.4.0-4.amzn2023.0.26.x86_64               26/38 
+  Installing       : graphite2-1.3.14-7.amzn2023.0.2.x86_64             27/38 
+  Installing       : google-noto-fonts-common-20240401-1.amzn2023.0.2   28/38 
+  Installing       : google-noto-sans-vf-fonts-20240401-1.amzn2023.0.   29/38 
+  Installing       : langpacks-core-font-en-3.0-21.amzn2023.0.4.noarc   30/38 
+  Installing       : cairo-1.18.0-4.amzn2023.0.3.x86_64                 31/38 
+  Installing       : harfbuzz-7.0.0-2.amzn2023.0.2.x86_64               32/38 
+  Installing       : freetype-2.13.2-5.amzn2023.0.2.x86_64              33/38 
+  Installing       : fontconfig-2.13.94-2.amzn2023.0.2.x86_64           34/38 
+  Running scriptlet: fontconfig-2.13.94-2.amzn2023.0.2.x86_64           34/38 
+  Installing       : gd-2.3.3-5.amzn2023.0.3.x86_64                     35/38 
+  Installing       : php8.5-gd-8.5.6-1.amzn2023.0.1.x86_64              36/38 
+  Installing       : php8.5-8.5.6-1.amzn2023.0.1.x86_64                 37/38 
+  Installing       : php8.5-mysqlnd-8.5.6-1.amzn2023.0.1.x86_64         38/38 
+  Running scriptlet: fontconfig-2.13.94-2.amzn2023.0.2.x86_64           38/38 
+  Running scriptlet: php8.5-mysqlnd-8.5.6-1.amzn2023.0.1.x86_64         38/38 
+  Verifying        : cairo-1.18.0-4.amzn2023.0.3.x86_64                  1/38 
+  Verifying        : fontconfig-2.13.94-2.amzn2023.0.2.x86_64            2/38 
+  Verifying        : fonts-filesystem-1:2.0.5-12.amzn2023.0.2.noarch     3/38 
+  Verifying        : freetype-2.13.2-5.amzn2023.0.2.x86_64               4/38 
+  Verifying        : gd-2.3.3-5.amzn2023.0.3.x86_64                      5/38 
+  Verifying        : google-noto-fonts-common-20240401-1.amzn2023.0.2    6/38 
+  Verifying        : google-noto-sans-vf-fonts-20240401-1.amzn2023.0.    7/38 
+  Verifying        : graphite2-1.3.14-7.amzn2023.0.2.x86_64              8/38 
+  Verifying        : harfbuzz-7.0.0-2.amzn2023.0.2.x86_64                9/38 
+  Verifying        : jbigkit-libs-2.1-21.amzn2023.0.2.x86_64            10/38 
+  Verifying        : langpacks-core-font-en-3.0-21.amzn2023.0.4.noarc   11/38 
+  Verifying        : libX11-1.8.10-2.amzn2023.0.1.x86_64                12/38 
+  Verifying        : libX11-common-1.8.10-2.amzn2023.0.1.noarch         13/38 
+  Verifying        : libXau-1.0.11-6.amzn2023.0.1.x86_64                14/38 
+  Verifying        : libXext-1.3.6-1.amzn2023.0.1.x86_64                15/38 
+  Verifying        : libXpm-3.5.17-3.amzn2023.0.2.x86_64                16/38 
+  Verifying        : libXrender-0.9.11-6.amzn2023.0.1.x86_64            17/38 
+  Verifying        : libjpeg-turbo-2.1.4-2.amzn2023.0.5.x86_64          18/38 
+  Verifying        : libpng-2:1.6.37-10.amzn2023.0.13.x86_64            19/38 
+  Verifying        : libsodium-1.0.19-5.amzn2023.x86_64                 20/38 
+  Verifying        : libtiff-4.4.0-4.amzn2023.0.26.x86_64               21/38 
+  Verifying        : libwebp-1.2.4-1.amzn2023.0.6.x86_64                22/38 
+  Verifying        : libxcb-1.17.0-1.amzn2023.0.1.x86_64                23/38 
+  Verifying        : libxslt-1.1.43-1.amzn2023.0.3.x86_64               24/38 
+  Verifying        : nginx-filesystem-1:1.30.2-1.amzn2023.0.1.noarch    25/38 
+  Verifying        : php8.5-8.5.6-1.amzn2023.0.1.x86_64                 26/38 
+  Verifying        : php8.5-cli-8.5.6-1.amzn2023.0.1.x86_64             27/38 
+  Verifying        : php8.5-common-8.5.6-1.amzn2023.0.1.x86_64          28/38 
+  Verifying        : php8.5-fpm-8.5.6-1.amzn2023.0.1.x86_64             29/38 
+  Verifying        : php8.5-gd-8.5.6-1.amzn2023.0.1.x86_64              30/38 
+  Verifying        : php8.5-mbstring-8.5.6-1.amzn2023.0.1.x86_64        31/38 
+  Verifying        : php8.5-mysqlnd-8.5.6-1.amzn2023.0.1.x86_64         32/38 
+  Verifying        : php8.5-pdo-8.5.6-1.amzn2023.0.1.x86_64             33/38 
+  Verifying        : php8.5-process-8.5.6-1.amzn2023.0.1.x86_64         34/38 
+  Verifying        : php8.5-sodium-8.5.6-1.amzn2023.0.1.x86_64          35/38 
+  Verifying        : php8.5-xml-8.5.6-1.amzn2023.0.1.x86_64             36/38 
+  Verifying        : pixman-0.43.4-1.amzn2023.0.4.x86_64                37/38 
+  Verifying        : xml-common-0.6.3-56.amzn2023.0.2.noarch            38/38 
 
-/**#@+
- * Authentication unique keys and salts.
- *
- * Change these to different unique phrases! You can generate these using
- * the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}.
- *
- * You can change these at any point in time to invalidate all existing cookies.
- * This will force all users to have to log in again.
- *
- * @since 2.6.0
- */
-define('AUTH_KEY',         '):Qor^YZ<:VSDaRq]zK+y=K6+Ze|N: |sjy_C+uC|5Bf,!,M#h;:WihBhG]#1jM(');
-define('SECURE_AUTH_KEY',  ' t+2T~qG$y-u _`{IpfdM(rv+|$$p2l7z%+RlTjV$zIZg/KH?82A7ahPgv7]7{t_');
-define('LOGGED_IN_KEY',    '<c{~0-BkA:6~[l&5?O3q,]pmRkb&|l, wtQ5~n<J|ER$B13,JL8C|j1hQ+cv=?,1');
-define('NONCE_KEY',        '8t}R-J{g),SY?,X-:~%olPUIB/DoJ~|:da;lb75jT!G-#xBQIN{Qo/uq>8u|V]DK');
-define('AUTH_SALT',        'EIoD-c4gQaot!:Y=NxbGcmp6)+_]6?W}1UT]u~crW8&*XN+liHQ+y}5Z_)7WTHI7');
-define('SECURE_AUTH_SALT', '&XbR8H!|i^19HxQ{mPGJB@DZzX-f%>SC|yC]&lj`]aI+>c([/YwGVME+uv(@)[0m');
-define('LOGGED_IN_SALT',   'yibhn=FQY<OfDtLwZG{A{T&-NO56@9P/,!{nuNF~.+SL5~uqNF7u0GM Ze45%KW`');
-define('NONCE_SALT',       '9*|V6I82[,/X}XD{HeM_.XWRi GWr)IR.D]X#IAE+NSba|t:Tk<C}Qt(d-hr-ji|');
+Installed:
+  cairo-1.18.0-4.amzn2023.0.3.x86_64                                          
+  fontconfig-2.13.94-2.amzn2023.0.2.x86_64                                    
+  fonts-filesystem-1:2.0.5-12.amzn2023.0.2.noarch                             
+  freetype-2.13.2-5.amzn2023.0.2.x86_64                                       
+  gd-2.3.3-5.amzn2023.0.3.x86_64                                              
+  google-noto-fonts-common-20240401-1.amzn2023.0.2.noarch                     
+  google-noto-sans-vf-fonts-20240401-1.amzn2023.0.2.noarch                    
+  graphite2-1.3.14-7.amzn2023.0.2.x86_64                                      
+  harfbuzz-7.0.0-2.amzn2023.0.2.x86_64                                        
+  jbigkit-libs-2.1-21.amzn2023.0.2.x86_64                                     
+  langpacks-core-font-en-3.0-21.amzn2023.0.4.noarch                           
+  libX11-1.8.10-2.amzn2023.0.1.x86_64                                         
+  libX11-common-1.8.10-2.amzn2023.0.1.noarch                                  
+  libXau-1.0.11-6.amzn2023.0.1.x86_64                                         
+  libXext-1.3.6-1.amzn2023.0.1.x86_64                                         
+  libXpm-3.5.17-3.amzn2023.0.2.x86_64                                         
+  libXrender-0.9.11-6.amzn2023.0.1.x86_64                                     
+  libjpeg-turbo-2.1.4-2.amzn2023.0.5.x86_64                                   
+  libpng-2:1.6.37-10.amzn2023.0.13.x86_64                                     
+  libsodium-1.0.19-5.amzn2023.x86_64                                          
+  libtiff-4.4.0-4.amzn2023.0.26.x86_64                                        
+  libwebp-1.2.4-1.amzn2023.0.6.x86_64                                         
+  libxcb-1.17.0-1.amzn2023.0.1.x86_64                                         
+  libxslt-1.1.43-1.amzn2023.0.3.x86_64                                        
+  nginx-filesystem-1:1.30.2-1.amzn2023.0.1.noarch                             
+  php8.5-8.5.6-1.amzn2023.0.1.x86_64                                          
+  php8.5-cli-8.5.6-1.amzn2023.0.1.x86_64                                      
+  php8.5-common-8.5.6-1.amzn2023.0.1.x86_64                                   
+  php8.5-fpm-8.5.6-1.amzn2023.0.1.x86_64                                      
+  php8.5-gd-8.5.6-1.amzn2023.0.1.x86_64                                       
+  php8.5-mbstring-8.5.6-1.amzn2023.0.1.x86_64                                 
+  php8.5-mysqlnd-8.5.6-1.amzn2023.0.1.x86_64                                  
+  php8.5-pdo-8.5.6-1.amzn2023.0.1.x86_64                                      
+  php8.5-process-8.5.6-1.amzn2023.0.1.x86_64                                  
+  php8.5-sodium-8.5.6-1.amzn2023.0.1.x86_64                                   
+  php8.5-xml-8.5.6-1.amzn2023.0.1.x86_64                                      
+  pixman-0.43.4-1.amzn2023.0.4.x86_64                                         
+  xml-common-0.6.3-56.amzn2023.0.2.noarch                                     
 
-/**#@-*/
+Complete!
+[root@ip-172-31-27-169 ~]# yum install mariadb1011-server.x86_64 -y
+Last metadata expiration check: 0:05:51 ago on Thu Jun 18 03:56:28 2026.
+Dependencies resolved.
+==============================================================================
+ Package                  Arch   Version                    Repository   Size
+==============================================================================
+Installing:
+ mariadb1011-server       x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux  11 M
+Installing dependencies:
+ lzo                      x86_64 2.10-4.amzn2023.0.2        amazonlinux  76 k
+ mariadb-connector-c      x86_64 3.3.10-1.amzn2023.0.1      amazonlinux 211 k
+ mariadb-connector-c-config
+                          noarch 3.3.10-1.amzn2023.0.1      amazonlinux 9.9 k
+ mariadb1011              x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux 1.8 M
+ mariadb1011-common       x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux  30 k
+ mariadb1011-errmsg       x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux 256 k
+ mysql-selinux            noarch 1.0.14-2.amzn2023.0.1      amazonlinux  36 k
+ perl-DBD-MariaDB         x86_64 1.22-1.amzn2023.0.5        amazonlinux 152 k
+ perl-DBI                 x86_64 1.647-1.amzn2023.0.2       amazonlinux 804 k
+ perl-File-Copy           noarch 2.34-477.amzn2023.0.9      amazonlinux  20 k
+ perl-Math-BigInt         noarch 1:1.9998.39-2.amzn2023.0.2 amazonlinux 202 k
+ perl-Math-BigRat         noarch 0.2624-500.amzn2023.0.2    amazonlinux  42 k
+ perl-Math-Complex        noarch 1.59-477.amzn2023.0.9      amazonlinux  47 k
+ perl-Sys-Hostname        x86_64 1.23-477.amzn2023.0.9      amazonlinux  17 k
+ snappy                   x86_64 1.1.8-5.amzn2023.0.2       amazonlinux  35 k
+Installing weak dependencies:
+ mariadb1011-backup       x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux 6.6 M
+ mariadb1011-client-utils x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux  40 k
+ mariadb1011-cracklib-password-check
+                          x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux  17 k
+ mariadb1011-gssapi-server
+                          x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux  18 k
+ mariadb1011-server-utils x86_64 3:10.11.18-1.amzn2023.0.1  amazonlinux 269 k
 
-/**
- * WordPress database table prefix.
- *
- * You can have multiple installations in one database if you give each
- * a unique prefix. Only numbers, letters, and underscores please!
- *
- * At the installation time, database tables are created with the specified prefix.
- * Changing this value after WordPress is installed will make your site think
- * it has not been installed.
- *
- * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix
- */
-$table_prefix = 'wp_';
+Transaction Summary
+==============================================================================
+Install  21 Packages
 
-/**
- * For developers: WordPress debugging mode.
- *
- * Change this to true to enable the display of notices during development.
- * It is strongly recommended that plugin and theme developers use WP_DEBUG
- * in their development environments.
- *
- * For information on other constants that can be used for debugging,
- * visit the documentation.
- *
- * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
- */
-define( 'WP_DEBUG', false );
+Total download size: 22 M
+Installed size: 143 M
+Downloading Packages:
+(1/21): mariadb-connector-c-config-3.3.10-1.a 256 kB/s | 9.9 kB     00:00    
+(2/21): lzo-2.10-4.amzn2023.0.2.x86_64.rpm    1.7 MB/s |  76 kB     00:00    
+(3/21): mariadb-connector-c-3.3.10-1.amzn2023 4.2 MB/s | 211 kB     00:00    
+(4/21): mariadb1011-10.11.18-1.amzn2023.0.1.x  40 MB/s | 1.8 MB     00:00    
+(5/21): mariadb1011-client-utils-10.11.18-1.a 1.0 MB/s |  40 kB     00:00    
+(6/21): mariadb1011-cracklib-password-check-1 681 kB/s |  17 kB     00:00    
+(7/21): mariadb1011-common-10.11.18-1.amzn202 946 kB/s |  30 kB     00:00    
+(8/21): mariadb1011-backup-10.11.18-1.amzn202  61 MB/s | 6.6 MB     00:00    
+(9/21): mariadb1011-gssapi-server-10.11.18-1. 512 kB/s |  18 kB     00:00    
+(10/21): mariadb1011-errmsg-10.11.18-1.amzn20 5.9 MB/s | 256 kB     00:00    
+(11/21): mysql-selinux-1.0.14-2.amzn2023.0.1. 1.5 MB/s |  36 kB     00:00    
+(12/21): mariadb1011-server-utils-10.11.18-1. 4.8 MB/s | 269 kB     00:00    
+(13/21): perl-DBD-MariaDB-1.22-1.amzn2023.0.5 3.9 MB/s | 152 kB     00:00    
+(14/21): perl-DBI-1.647-1.amzn2023.0.2.x86_64  25 MB/s | 804 kB     00:00    
+(15/21): perl-File-Copy-2.34-477.amzn2023.0.9 770 kB/s |  20 kB     00:00    
+(16/21): perl-Math-BigInt-1.9998.39-2.amzn202 6.5 MB/s | 202 kB     00:00    
+(17/21): mariadb1011-server-10.11.18-1.amzn20  65 MB/s |  11 MB     00:00    
+(18/21): perl-Math-BigRat-0.2624-500.amzn2023 546 kB/s |  42 kB     00:00    
+(19/21): perl-Math-Complex-1.59-477.amzn2023. 881 kB/s |  47 kB     00:00    
+(20/21): snappy-1.1.8-5.amzn2023.0.2.x86_64.r 1.5 MB/s |  35 kB     00:00    
+(21/21): perl-Sys-Hostname-1.23-477.amzn2023. 621 kB/s |  17 kB     00:00    
+------------------------------------------------------------------------------
+Total                                          55 MB/s |  22 MB     00:00     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                      1/1 
+  Installing       : mariadb-connector-c-config-3.3.10-1.amzn2023.0.1    1/21 
+  Installing       : mariadb1011-common-3:10.11.18-1.amzn2023.0.1.x86    2/21 
+  Installing       : mariadb-connector-c-3.3.10-1.amzn2023.0.1.x86_64    3/21 
+  Installing       : perl-Sys-Hostname-1.23-477.amzn2023.0.9.x86_64      4/21 
+  Installing       : perl-Math-Complex-1.59-477.amzn2023.0.9.noarch      5/21 
+  Installing       : perl-Math-BigRat-0.2624-500.amzn2023.0.2.noarch     6/21 
+  Installing       : perl-Math-BigInt-1:1.9998.39-2.amzn2023.0.2.noar    7/21 
+  Installing       : perl-DBI-1.647-1.amzn2023.0.2.x86_64                8/21 
+  Installing       : perl-DBD-MariaDB-1.22-1.amzn2023.0.5.x86_64         9/21 
+  Installing       : mariadb1011-errmsg-3:10.11.18-1.amzn2023.0.1.x86   10/21 
+  Installing       : snappy-1.1.8-5.amzn2023.0.2.x86_64                 11/21 
+  Installing       : perl-File-Copy-2.34-477.amzn2023.0.9.noarch        12/21 
+  Running scriptlet: mysql-selinux-1.0.14-2.amzn2023.0.1.noarch         13/21 
+  Installing       : mysql-selinux-1.0.14-2.amzn2023.0.1.noarch         13/21 
+  Running scriptlet: mysql-selinux-1.0.14-2.amzn2023.0.1.noarch         13/21 
+libsemanage.semanage_direct_install_info: Overriding mysql module at lower priority 100 with module at priority 200.
 
-/* Add any custom values between this line and the "stop editing" line. */
+  Installing       : lzo-2.10-4.amzn2023.0.2.x86_64                     14/21 
+  Installing       : mariadb1011-client-utils-3:10.11.18-1.amzn2023.0   15/21 
+  Installing       : mariadb1011-3:10.11.18-1.amzn2023.0.1.x86_64       16/21 
+  Installing       : mariadb1011-backup-3:10.11.18-1.amzn2023.0.1.x86   17/21 
+  Installing       : mariadb1011-cracklib-password-check-3:10.11.18-1   18/21 
+  Running scriptlet: mariadb1011-cracklib-password-check-3:10.11.18-1   18/21 
+  Installing       : mariadb1011-gssapi-server-3:10.11.18-1.amzn2023.   19/21 
+  Installing       : mariadb1011-server-utils-3:10.11.18-1.amzn2023.0   20/21 
+  Running scriptlet: mariadb1011-server-3:10.11.18-1.amzn2023.0.1.x86   21/21 
+  Installing       : mariadb1011-server-3:10.11.18-1.amzn2023.0.1.x86   21/21 
+  Running scriptlet: mariadb1011-server-3:10.11.18-1.amzn2023.0.1.x86   21/21 
+  Running scriptlet: mysql-selinux-1.0.14-2.amzn2023.0.1.noarch         21/21 
+  Running scriptlet: mariadb1011-server-3:10.11.18-1.amzn2023.0.1.x86   21/21 
+  Verifying        : lzo-2.10-4.amzn2023.0.2.x86_64                      1/21 
+  Verifying        : mariadb-connector-c-3.3.10-1.amzn2023.0.1.x86_64    2/21 
+  Verifying        : mariadb-connector-c-config-3.3.10-1.amzn2023.0.1    3/21 
+  Verifying        : mariadb1011-3:10.11.18-1.amzn2023.0.1.x86_64        4/21 
+  Verifying        : mariadb1011-backup-3:10.11.18-1.amzn2023.0.1.x86    5/21 
+  Verifying        : mariadb1011-client-utils-3:10.11.18-1.amzn2023.0    6/21 
+  Verifying        : mariadb1011-common-3:10.11.18-1.amzn2023.0.1.x86    7/21 
+  Verifying        : mariadb1011-cracklib-password-check-3:10.11.18-1    8/21 
+  Verifying        : mariadb1011-errmsg-3:10.11.18-1.amzn2023.0.1.x86    9/21 
+  Verifying        : mariadb1011-gssapi-server-3:10.11.18-1.amzn2023.   10/21 
+  Verifying        : mariadb1011-server-3:10.11.18-1.amzn2023.0.1.x86   11/21 
+  Verifying        : mariadb1011-server-utils-3:10.11.18-1.amzn2023.0   12/21 
+  Verifying        : mysql-selinux-1.0.14-2.amzn2023.0.1.noarch         13/21 
+  Verifying        : perl-DBD-MariaDB-1.22-1.amzn2023.0.5.x86_64        14/21 
+  Verifying        : perl-DBI-1.647-1.amzn2023.0.2.x86_64               15/21 
+  Verifying        : perl-File-Copy-2.34-477.amzn2023.0.9.noarch        16/21 
+  Verifying        : perl-Math-BigInt-1:1.9998.39-2.amzn2023.0.2.noar   17/21 
+  Verifying        : perl-Math-BigRat-0.2624-500.amzn2023.0.2.noarch    18/21 
+  Verifying        : perl-Math-Complex-1.59-477.amzn2023.0.9.noarch     19/21 
+  Verifying        : perl-Sys-Hostname-1.23-477.amzn2023.0.9.x86_64     20/21 
+  Verifying        : snappy-1.1.8-5.amzn2023.0.2.x86_64                 21/21 
+
+Installed:
+  lzo-2.10-4.amzn2023.0.2.x86_64                                              
+  mariadb-connector-c-3.3.10-1.amzn2023.0.1.x86_64                            
+  mariadb-connector-c-config-3.3.10-1.amzn2023.0.1.noarch                     
+  mariadb1011-3:10.11.18-1.amzn2023.0.1.x86_64                                
+  mariadb1011-backup-3:10.11.18-1.amzn2023.0.1.x86_64                         
+  mariadb1011-client-utils-3:10.11.18-1.amzn2023.0.1.x86_64                   
+  mariadb1011-common-3:10.11.18-1.amzn2023.0.1.x86_64                         
+  mariadb1011-cracklib-password-check-3:10.11.18-1.amzn2023.0.1.x86_64        
+  mariadb1011-errmsg-3:10.11.18-1.amzn2023.0.1.x86_64                         
+  mariadb1011-gssapi-server-3:10.11.18-1.amzn2023.0.1.x86_64                  
+  mariadb1011-server-3:10.11.18-1.amzn2023.0.1.x86_64                         
+  mariadb1011-server-utils-3:10.11.18-1.amzn2023.0.1.x86_64                   
+  mysql-selinux-1.0.14-2.amzn2023.0.1.noarch                                  
+  perl-DBD-MariaDB-1.22-1.amzn2023.0.5.x86_64                                 
+  perl-DBI-1.647-1.amzn2023.0.2.x86_64                                        
+  perl-File-Copy-2.34-477.amzn2023.0.9.noarch                                 
+  perl-Math-BigInt-1:1.9998.39-2.amzn2023.0.2.noarch                          
+  perl-Math-BigRat-0.2624-500.amzn2023.0.2.noarch                             
+  perl-Math-Complex-1.59-477.amzn2023.0.9.noarch                              
+  perl-Sys-Hostname-1.23-477.amzn2023.0.9.x86_64                              
+  snappy-1.1.8-5.amzn2023.0.2.x86_64                                          
+
+Complete!
+[root@ip-172-31-27-169 ~]# systemctl start mariadb
+[root@ip-172-31-27-169 ~]# systemctl enable mariadb
+Created symlink /etc/systemd/system/mysql.service → /usr/lib/systemd/system/mariadb.service.
+Created symlink /etc/systemd/system/mysqld.service → /usr/lib/systemd/system/mariadb.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/mariadb.service → /usr/lib/systemd/system/mariadb.service.
+[root@ip-172-31-27-169 ~]# systemctl status mariadb
+● mariadb.service - MariaDB 10.11 database server
+     Loaded: loaded (/usr/lib/systemd/system/mariadb.service; enabled; preset>
+     Active: active (running) since Thu 2026-06-18 04:03:25 UTC; 40s ago
+       Docs: man:mariadbd(8)
+             https://mariadb.com/kb/en/library/systemd/
+   Main PID: 28592 (mariadbd)
+     Status: "Taking your SQL requests now..."
+      Tasks: 12 (limit: 1014)
+     Memory: 81.9M
+        CPU: 655ms
+     CGroup: /system.slice/mariadb.service
+             └─28592 /usr/libexec/mariadbd --basedir=/usr
+
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal mariadb-prepare-db-dir[28547]: >
+Jun 18 04:03:25 ip-172-31-27-169.ec2.internal systemd[1]: Started mariadb.ser>
+[root@ip-172-31-27-169 ~]# mysql_secure_installation
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+haven't set the root password yet, you should just press enter here.
+
+Enter current password for root (enter for none): 
+OK, successfully used password, moving on...
+
+Setting the root password or using the unix_socket ensures that nobody
+can log into the MariaDB root user without the proper authorisation.
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Switch to unix_socket authentication [Y/n] y
+Enabled successfully!
+Reloading privilege tables..
+ ... Success!
 
 
+You already have your root account protected, so you can safely answer 'n'.
 
-/* That's all, stop editing! Happy publishing. */
+Change the root password? [Y/n] n
+ ... skipping.
 
-/** Absolute path to the WordPress directory. */
-if ( ! defined( 'ABSPATH' ) ) {
-        define( 'ABSPATH', __DIR__ . '/' );
-}
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
 
-/** Sets up WordPress vars and included files. */
-require_once ABSPATH . 'wp-settings.php';
+Remove anonymous users? [Y/n] y
+ ... Success!
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] y
+ ... Success!
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+[root@ip-172-31-27-169 ~]# mysql
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.11.18-MariaDB MariaDB Server
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE DATABASE wordpress;
+Query OK, 1 row affected (0.000 sec)
+
+MariaDB [(none)]> CREATE USER 'wpuser'@'localhost' IDENTIFIED BY 'Dankook2026';
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON wordpress.* TO 'wpuser'@'localhost'; 
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [(none)]> FLUSH PRIVILEGES;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [(none)]> EXIT;
+Bye
+[root@ip-172-31-27-169 ~]# cd /var/www/html/
+[root@ip-172-31-27-169 html]# wget https://wordpress.org/latest.tar.gz
+--2026-06-18 04:11:41--  https://wordpress.org/latest.tar.gz
+Resolving wordpress.org (wordpress.org)... 198.143.164.252, 2607:f978:5:8002::c68f:a4fc
+Connecting to wordpress.org (wordpress.org)|198.143.164.252|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 29663483 (28M) [application/octet-stream]
+Saving to: ‘latest.tar.gz’
+
+latest.tar.gz       100%[=================>]  28.29M  81.6MB/s    in 0.3s    
+
+2026-06-18 04:11:41 (81.6 MB/s) - ‘latest.tar.gz’ saved [29663483/29663483]
+
+[root@ip-172-31-27-169 html]# ls
+latest.tar.gz
+[root@ip-172-31-27-169 html]# tar -xzf latest.tar.gz
+[root@ip-172-31-27-169 html]# ls
+latest.tar.gz  wordpress
+[root@ip-172-31-27-169 html]# ls wordpress/
+index.php        wp-blog-header.php    wp-includes        wp-settings.php
+license.txt      wp-comments-post.php  wp-links-opml.php  wp-signup.php
+readme.html      wp-config-sample.php  wp-load.php        wp-trackback.php
+wp-activate.php  wp-content            wp-login.php       xmlrpc.php
+wp-admin         wp-cron.php           wp-mail.php
+[root@ip-172-31-27-169 html]# chown -R apache:apache /var/www/html
+[root@ip-172-31-27-169 html]# chmod -R 755 /var/www/html
+[root@ip-172-31-27-169 html]# cd /var/www/html/
+[root@ip-172-31-27-169 html]# mv wordpress/* /var/www/html/
+[root@ip-172-31-27-169 html]# rm -rf wordpress latest.tar.gz
+[root@ip-172-31-27-169 html]# pwd
+/var/www/html
+[root@ip-172-31-27-169 html]# ls -l
+total 244
+-rwxr-xr-x.  1 apache apache   405 Feb  6  2020 index.php
+-rwxr-xr-x.  1 apache apache 19903 Jan  1 00:07 license.txt
+-rwxr-xr-x.  1 apache apache  7406 Jan  9 11:47 readme.html
+-rwxr-xr-x.  1 apache apache  7371 Feb 17 17:05 wp-activate.php
+drwxr-xr-x.  9 apache apache 16384 May 19 17:16 wp-admin
+-rwxr-xr-x.  1 apache apache   351 Feb  6  2020 wp-blog-header.php
+-rwxr-xr-x.  1 apache apache  2323 Jun 14  2023 wp-comments-post.php
+-rwxr-xr-x.  1 apache apache  3339 Aug 12  2025 wp-config-sample.php
+drwxr-xr-x.  4 apache apache    52 May 19 05:12 wp-content
+-rwxr-xr-x.  1 apache apache  5617 Aug  2  2024 wp-cron.php
+drwxr-xr-x. 35 apache apache 16384 May 20 17:39 wp-includes
+-rwxr-xr-x.  1 apache apache  2493 Apr 30  2025 wp-links-opml.php
+-rwxr-xr-x.  1 apache apache  3937 Mar 11  2024 wp-load.php
+-rwxr-xr-x.  1 apache apache 51850 Feb 28 22:57 wp-login.php
+-rwxr-xr-x.  1 apache apache  8727 Apr  2  2025 wp-mail.php
+-rwxr-xr-x.  1 apache apache 32650 May  8 15:59 wp-settings.php
+-rwxr-xr-x.  1 apache apache 34621 Feb 17 17:05 wp-signup.php
+-rwxr-xr-x.  1 apache apache  5214 Aug 19  2025 wp-trackback.php
+-rwxr-xr-x.  1 apache apache  3205 Nov  8  2024 xmlrpc.php
+[root@ip-172-31-27-169 html]# pwd
+/var/www/html
+[root@ip-172-31-27-169 html]# cp wp-config-sample.php wp-config.php
+[root@ip-172-31-27-169 html]# vi wp-config.php
+[root@ip-172-31-27-169 html]# systemctl restart httpd
